@@ -173,7 +173,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"
-            android:onClick="onOperator"
+            android:onClick="onDecimalPoint"
             android:text="@string/dot"
             tools:ignore="UsingOnClickInXML"/>
 
