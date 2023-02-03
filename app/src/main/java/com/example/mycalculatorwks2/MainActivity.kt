@@ -69,7 +69,37 @@ class MainActivity : AppCompatActivity() {
                         number01 = prefix + number01
                     }
                     val resultCalculateNumber = number01.toDouble() - number02.toDouble()
-                    tvInput?.text = resultCalculateNumber.toString()
+                    tvInput?.text = removeZeroAfterDot(resultCalculateNumber.toString())
+                } else if  (tvValue.contains("+")) {
+                    var splitValue = tvValue.split("+")
+                    var number01 = splitValue[0]
+                    var number02 = splitValue[1]
+
+                    if (prefix.isNotEmpty()) {
+                        number01 = prefix + number01
+                    }
+                    val resultCalculateNumber = number01.toDouble() + number02.toDouble()
+                    tvInput?.text = removeZeroAfterDot(resultCalculateNumber.toString())
+                } else if  (tvValue.contains("/")) {
+                    var splitValue = tvValue.split("/")
+                    var number01 = splitValue[0]
+                    var number02 = splitValue[1]
+
+                    if (prefix.isNotEmpty()) {
+                        number01 = prefix + number01
+                    }
+                    val resultCalculateNumber = number01.toDouble() / number02.toDouble()
+                    tvInput?.text = removeZeroAfterDot(resultCalculateNumber.toString())
+                } else if  (tvValue.contains("*")) {
+                    var splitValue = tvValue.split("*")
+                    var number01 = splitValue[0]
+                    var number02 = splitValue[1]
+
+                    if (prefix.isNotEmpty()) {
+                        number01 = prefix + number01
+                    }
+                    val resultCalculateNumber = number01.toDouble() * number02.toDouble()
+                    tvInput?.text = removeZeroAfterDot(resultCalculateNumber.toString())
                 }
 
             } catch (e: ArithmeticException) {
@@ -87,5 +117,13 @@ class MainActivity : AppCompatActivity() {
                     || value.contains("+")
                     || value.contains("-")
         }
+    }
+
+    private fun removeZeroAfterDot(result: String) : String {
+        var value = result
+        if (result.contains(".0")) {
+            value = result.substring(0,result.length - 2)
+        }
+        return value
     }
 }
